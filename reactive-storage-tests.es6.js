@@ -7,7 +7,9 @@
  */
 Tinytest.addAsync('Depedencies Trigger', (test, next) => {
   let autorunFired = false;
+  let autorun;
   Tracker.autorun((c) => {
+    autorun = c;
     if (!c.firstRun) {
       autorunFired = true;
     }
@@ -17,6 +19,7 @@ Tinytest.addAsync('Depedencies Trigger', (test, next) => {
   Tracker.afterFlush(() => {
     test.isTrue(autorunFired);
     Storage.Local.clear();
+    autorun.stop();
     next();
   });
 });
