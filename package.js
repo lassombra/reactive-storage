@@ -13,12 +13,15 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('1.2.1');
   api.use('ecmascript');
+  api.use('tracker');
   api.addFiles('reactive-storage.js');
 });
 
 Package.onTest(function(api) {
   api.use('ecmascript');
+  api.use('tracker');
   api.use('tinytest');
   api.use('lassombra:reactive-storage');
-  api.addFiles('reactive-storage-tests.js');
+  // this is a client only application
+  api.addFiles('reactive-storage-tests.es6.js', 'client');
 });
