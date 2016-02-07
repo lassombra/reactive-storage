@@ -2,7 +2,7 @@ Package.describe({
   name: 'lassombra:reactive-storage',
   version: '0.0.1',
   // Brief, one-line summary of the package.
-  summary: '',
+  summary: 'Reactive wrapper around cookies and HTML5 Storage',
   // URL to the Git repository containing the source code for this package.
   git: '',
   // By default, Meteor will default to using README.md for documentation.
@@ -14,7 +14,10 @@ Package.onUse(function(api) {
   api.versionsFrom('1.2.1');
   api.use('ecmascript');
   api.use('tracker');
-  api.addFiles('reactive-storage.js');
+  api.use('jquery');
+  api.addFiles('CookieStore.es6.js', 'client');
+  api.addFiles('Storage.es6.js', 'client');
+  api.export('Storage');
 });
 
 Package.onTest(function(api) {

@@ -15,7 +15,7 @@ Tinytest.addAsync('Depedencies Trigger', (test, next) => {
     }
     Storage.Local.get('test');
   });
-  Storage.Local.set('test');
+  Storage.Local.set('test', '1337');
   Tracker.afterFlush(() => {
     test.isTrue(autorunFired);
     Storage.Local.clear();
