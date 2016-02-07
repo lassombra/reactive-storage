@@ -40,8 +40,10 @@ Tinytest.add('Can\'t retrieve deleted data', test => {
 
 Tinytest.addAsync('Depedencies stick around after deleting', (test, next) => {
   let autorunFired = false;
+  let autorun;
   Storage.Session.set('data', '1337');
   Tracker.autorun((c) => {
+    autorun = c;
     if (!c.firstRun && Storage.Session.get('data')) {
       autorunFired = true;
     }
@@ -53,6 +55,7 @@ Tinytest.addAsync('Depedencies stick around after deleting', (test, next) => {
     Tracker.afterFlush(() => {
       test.isTrue(autorunFired);
       Storage.Session.clear();
+      autorun.stop();
       next();
     });
   });
