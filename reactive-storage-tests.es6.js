@@ -67,7 +67,7 @@ Tinytest.add('Clear removes all data from storage that was set by this storage',
 Tinytest.add('Reload catches all changes', test => {
   Storage.Local.set('data', '1331');
   localStorage.setItem('reactiveLocaldata', '1337');
-  Storage.Local.reset();
+  Storage.Local.reload();
   test.isTrue(Storage.Local.get('data') === '1337');
   Storage.Local.clear();
 });
