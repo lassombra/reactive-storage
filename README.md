@@ -19,3 +19,6 @@ Reactive wrapper on cookies and HTML5 Storage API
 
 ###Notes
 Package has tests and is being used in production currently on at least 3 sites by me.  Bug reports and feature requests always welcome!
+
+###License
+Released under the MIT license.  Have fun, go nuts.  Please contribute back to this one if you have updates, forks are great and all but a consistent repository is nice too!
