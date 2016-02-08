@@ -15,6 +15,7 @@ Package.onUse(function(api) {
   api.use('ecmascript');
   api.use('tracker');
   api.use('jquery');
+  api.use('underscore');
   api.addFiles('CookieStore.es6.js', 'client');
   api.addFiles('Storage.es6.js', 'client');
   api.export('Storage');
