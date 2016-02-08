@@ -1,4 +1,4 @@
-# reactive-storage [![Build Status](https://travis-ci.org/lassombra/reactive-storage.svg?branch=master)](https://travis-ci.org/lassombra/reactive-storage)
+# reactive-storage [![Build Status](https://travis-ci.org/lassombra/reactive-storage.svg?branch=development)](https://travis-ci.org/lassombra/reactive-storage)
 Reactive wrapper on cookies and HTML5 Storage API
 
 ##Features
