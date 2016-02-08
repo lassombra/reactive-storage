@@ -2,6 +2,7 @@ Storage = class Storage {
     /**
      * Create a new storage object to track changes on.
      * @param area HTML5 Storage area
+     * @param namespace {string} a string that will be used to keep saved fields from colliding with other libraries.
      * @param fallback {boolean} whether to allow for using cookies as fallback
      * @param fallbackDur {number} if defined, number of days to save cookie fallback for.  If undefined or false, will
      * be saved for the browser session.
@@ -34,7 +35,7 @@ Storage = class Storage {
         this._valueMap = new Map();
         // here we set up the cookie fallback if so required.
         if (!this.area && fallback) {
-            this.area = new CookieStore(fallback, fallbackDur);
+            this.area = new CookieStore(fallbackDur);
         }
         // don't forget to save the naming space.
         this.namespace = namespace;
@@ -68,15 +69,18 @@ Storage = class Storage {
             if (this._dependencyMap.has(name)) {
                 this._dependencyMap.get(name).changed();
             }
-            this._valueMap.remove(name);
+            this._valueMap.delete(name);
         }
     }
     clear() {
-        for (let key of [...this._valueMap.keys]) {
+        for (let key of this._valueMap.keys()) {
             this.remove(key);
         }
     }
     reload() {
+        if (this.area.reload) {
+            this.area.reload();
+        }
         for (let key of this._dependencyMap.keys()) {
             this.refresh(key);
         }
